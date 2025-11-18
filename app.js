@@ -32,7 +32,7 @@ const store = new MongoDbStore({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const isProduction = process.env.NODE_ENV === "production";
+const isProduction = "true";
 
 // --------------------------
 //  EXPRESS SESSION
