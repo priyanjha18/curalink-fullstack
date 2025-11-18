@@ -9,6 +9,7 @@ const trialRoutes = require("./trial");
 const publicationRoute = require("./routes/pub");
 const expertRoute = require("./routes/experts");
 const postRoute = require("./routes/post");
+const cors=require("cors")
 
 const app = express();
 
@@ -26,13 +27,21 @@ const store = new MongoDbStore({
   collection: "sessions",
 });
 
+
 // --------------------------
 //  MIDDLEWARE
 // --------------------------
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(
+  cors({
+    origin: "https://curalink-fullstack.onrender.com",
+    credentials: true,
+  })
+);
 const isProduction = "true";
+app.set("trust proxy", 1);
 
 // --------------------------
 //  EXPRESS SESSION
